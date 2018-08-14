@@ -1,11 +1,11 @@
 name := "core"
 
-//version := "2017.12.0-SNAPSHOT"
+//version := "2018.8.0-SNAPSHOT"
 
 enablePlugins(ScalaJSPlugin)
 
 
-val scala212 = "2.12.4"
+val scala212 = "2.12.6"
 
 scalaVersion := scala212
 
@@ -39,6 +39,7 @@ resolvers += Resolver.bintrayRepo("scalajs-react-interface", "maven")
 resolvers += Resolver.bintrayRepo("scalajs-jest", "maven")
 
 scalaJSUseMainModuleInitializer in Test := true
+scalaJSUseTestModuleInitializer in Test := false
 
 scalaJSLinkerConfig ~= (_.withModuleKind(ModuleKind.CommonJSModule).withSourceMap(false))
 
@@ -68,8 +69,8 @@ def runJest() = {
 
 
 libraryDependencies ++= Seq(
-  "org.scala-js" %%% "scalajs-dom" % "0.9.4" % Test,
-  "scalajs-jest" %%% "core" % "2018.2.2-RC" % Test
+  "org.scala-js" %%% "scalajs-dom" % "0.9.6" % Test,
+  "scalajs-jest" %%% "core" % "2018.8.14-RC" % Test
 )
 
 scalaJSStage in Global := FastOptStage

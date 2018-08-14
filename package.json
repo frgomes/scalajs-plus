@@ -11,7 +11,7 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "jest": "^22.0.4",
+    "jest": "^23.5.0",
     "zen-observable": "^0.7.1"
   }
 }

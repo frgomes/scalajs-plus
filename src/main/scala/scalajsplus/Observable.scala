@@ -6,15 +6,13 @@ import scala.scalajs.js.|
 import scalajsplus.macros.FunctionObjectMacro
 @js.native
 @JSImport("zen-observable", JSImport.Default)
-class Observable[T](
-    subscriber: js.Function1[SubscriptionObserver,
-                             js.Function0[Any] | Subscription])
+class Observable[T](subscriber: js.Function1[SubscriptionObserver[T], Any])
     extends js.Object {
 
   def subscribe(observer: Observer[T]): Subscription = js.native
 
   def subscribe(onNext: js.Function1[T, Any],
-                onError: js.Function1[js.Error, Any] = ???,
+                onError: js.Function1[Any, Any] = ???,
                 onComplete: js.Function0[Any] = ???): Subscription =
     js.native
 
@@ -31,7 +29,7 @@ trait Subscription extends js.Object {
 
 trait Observer[T] extends js.Object {
   val next: js.Function1[T, Any]
-  val error: js.UndefOr[js.Function1[js.Error, Any]] = js.undefined
+  val error: js.UndefOr[js.Function1[Any, Any]] = js.undefined
   val start: js.UndefOr[js.Function1[Subscription, Any]] = js.undefined
   val complete: js.UndefOr[js.Function0[Any]] = js.undefined
 }
@@ -49,12 +47,22 @@ trait Observer[T] extends js.Object {
 //}
 
 @js.native
-trait SubscriptionObserver extends js.Object {}
+trait SubscriptionObserver[T] extends js.Object {
+
+  def next(value: T): Unit = js.native
+
+  def error(errorValue: Any): Unit = js.native
+
+  def complete(): Unit = js.native
+
+  def closed(): Boolean = js.native
+
+}
 @js.native
 @JSImport("zen-observable", JSImport.Default)
 object Observable extends js.Object {
 
   def of[T](in: T*): Observable[T] = js.native
 
-  def from[T](observable: Observable[T]): Observable[T] = js.native
+  def from[T](observable: Observable[T] | T): Observable[T] = js.native
 }

@@ -1,6 +1,6 @@
 name := "core"
 
-//version := "2018.8.0-SNAPSHOT"
+//version := "2018.8.14"
 
 enablePlugins(ScalaJSPlugin)
 

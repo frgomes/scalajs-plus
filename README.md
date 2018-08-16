@@ -98,6 +98,7 @@ libraryDependencies += "scalajs-plus" %%% "core" % "replaceThisWithLatestVersion
 - [OptionalParam](#optionalparam)
 - [ReadonlyArray](#readonlyarray)
 - [UnionTypeToJSAnyImplicit](#uniontype-to-jsany-implicit)
+- [UndefNullOr](#undefnullor)
 
 ### OptionalParam
 
@@ -151,6 +152,17 @@ a.push() // coompile error
 
  
 
+### UndefNullOr
 
+when interop with js world, if you want to treat undefined/null as empty use `UndefNullOr` type 
 
+```scala
+  trait Data extends js.Object {
+    val x: UndefNullOr[Int]
+    val y: UndefNullOr[String]
+    val z: UndefNullOr[Double]
+  }
+  val data = json(x = js.undefined, y = null, z = 1.0).asInstanceOf[Data]
+
+```
 

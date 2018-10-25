@@ -1,11 +1,11 @@
 name := "core"
 
-//version := "2018.9.0-SNAPSHOT"
+//version := "2018.10.0-SNAPSHOT"
 
 enablePlugins(ScalaJSPlugin)
 
 
-val scala212 = "2.12.6"
+val scala212 = "2.12.7"
 
 scalaVersion := scala212
 
@@ -70,7 +70,7 @@ def runJest() = {
 
 libraryDependencies ++= Seq(
   "org.scala-js" %%% "scalajs-dom" % "0.9.6" % Test,
-  "scalajs-jest" %%% "core" % "2018.8.14-RC" % Test
+  "scalajs-jest" %%% "core" % "2018.10.25-RC" % Test
 )
 
 scalaJSStage in Global := FastOptStage

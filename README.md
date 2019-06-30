@@ -6,7 +6,7 @@ This repository contains handy macros , facades for upcoming javascript features
 // build.sbt
 resolvers += Resolver.bintrayRepo("scalajs-plus", "maven")
 libraryDependencies += "scalajs-plus" %%% "core" % "replaceThisWithLatestVersionNumberFromReleaseTags"
-//works with scalajs >= 1.0.0-M2 and supports only scala 2.12
+//works with scalajs >= 1.0.0-M8 and supports only scala 2.12
 ```
 
 
